@@ -1,15 +1,22 @@
+import User from "@/models/userModel"
+
+const UserProfile =async ({ params }: any) => {
+  const id=params._id
+  const findUserDetails=await  User.findOne({id})
 
 
-const UserProfile = ({params}: any) => {
   return (
-    
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1>Profile</h1>
-        <hr />
-        <h1>Profile page </h1>
-        <span className="p-2 ml-2 rounded bg-orange-500 text-black">{params.id}</span>
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-80">
+        <h1 className="text-2xl font-bold mb-4 text-center">Profile</h1>
+        <hr className="mb-4" />
+        <h1 className="text-xl font-semibold mb-4 text-center">Profile page</h1>
+        <span className="p-2 rounded bg-orange-500 text-white text-center block">
+          {findUserDetails.id} 
+        </span>
+        <span className="bg-blue-500 p-3 rounded-lg shadow-lg w-80 text-white"> {findUserDetails.username} </span>
       </div>
-   
+    </div>
   );
 };
 
